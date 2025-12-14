@@ -3,8 +3,6 @@ import OutputHeader from "@/components/custom/Header/OutputHeader";
 import Hero from "@/components/custom/Hero/Hero";
 import OutputTabs from "@/components/custom/Output/OutputTabs";
 import Query from "@/components/custom/QueryBox/Query";
-import useOutputStore from "@/stores/outputStore";
-import { useEffect } from "react";
 
 const Layout = () => {
     return (
@@ -17,9 +15,9 @@ const Layout = () => {
                         <Query />
                     </div>
                 </div>
-                <div className="lg:max-h-lvh relative flex flex-col bg-accent lg:overflow-auto">
+                <div className="lg:max-h-lvh max-lg:py-12 relative flex flex-col bg-accent lg:overflow-auto">
                     <OutputHeader />
-                    <div className="lg:max-h-[calc(100lvh-6rem)] px-6 md:px-10 flex flex-col items-center justify-center">
+                    <div className="lg:max-h-[calc(100lvh-6rem)] mt-8 lg:mt-12 px-6 md:px-10 flex flex-col items-center justify-center">
                         <OutputTabs />
                     </div>
                 </div>

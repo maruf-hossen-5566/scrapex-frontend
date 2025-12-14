@@ -1,21 +1,12 @@
-import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useGlobalStore from "@/stores/globalStore";
 import useQueryStore from "@/stores/queryStore";
-import useOutputStore from "@/stores/outputStore";
 import PreviewTabs from "./PreviewTabs";
 
 const OutputTabs = () => {
     const { searchQuery } = useQueryStore();
     const isLoading = useGlobalStore((state) => state.isLoading);
-    const setData = useOutputStore((state) => state.setData);
-    const setIsLoading = useGlobalStore((state) => state.setIsLoading);
-
-    const handleStop = () => {
-        setIsLoading(false);
-        setData(null);
-    };
 
     return (
         <>

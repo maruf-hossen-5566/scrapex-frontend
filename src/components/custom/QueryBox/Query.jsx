@@ -30,6 +30,7 @@ const Query = () => {
 
         try {
             checkQueryInputs(queryData);
+            console.log("Query data: ", queryData)
         } catch (e) {
             setIsLoading(false);
             console.log("Error: ", e);
