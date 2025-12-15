@@ -1,12 +1,21 @@
 import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useGlobalStore from "@/stores/globalStore";
+import useOutputStore from "@/stores/outputStore";
 import useQueryStore from "@/stores/queryStore";
+import { useEffect } from "react";
+import { toast } from "sonner";
 import PreviewTabs from "./PreviewTabs";
+import { fetchScrapedData } from "@/services/scrape.service.js";
 
 const OutputTabs = () => {
     const { searchQuery } = useQueryStore();
     const isLoading = useGlobalStore((state) => state.isLoading);
+    const setData = useOutputStore((state) => state.setData);
+    const pendingJobId = useOutputStore((state) => state.pendingJobId);
+    const setPendingJobId = useOutputStore((state) => state.setPendingJobId);
+    const clearOutputStore = useOutputStore((state) => state.clearOutputStore);
+    const setIsLoading = useGlobalStore((state) => state.setIsLoading);
 
     return (
         <>

@@ -3,10 +3,10 @@ import { Trash2 } from "lucide-react";
 import useOutputStore from "@/stores/outputStore";
 
 const OutputHeader = () => {
-    const setData = useOutputStore((state) => state.setData);
+    const clearOutputStore = useOutputStore((state) => state.clearOutputStore);
 
     const handleClearOutput = () => {
-        setData(null);
+        clearOutputStore();
     };
 
     return (

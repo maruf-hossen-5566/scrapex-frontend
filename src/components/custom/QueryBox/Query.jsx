@@ -8,7 +8,7 @@ import useGlobalStore from "@/stores/globalStore";
 import useQueryStore from "@/stores/queryStore";
 import useOutputStore from "@/stores/outputStore";
 import { toast } from "sonner";
-import { startScraping } from "@/services/scrap.service";
+import { startScraping } from "@/services/scrape.service";
 
 const Query = () => {
     const searchQuery = useQueryStore((state) => state.searchQuery);
@@ -18,6 +18,7 @@ const Query = () => {
     const isLoading = useGlobalStore((state) => state.isLoading);
     const setIsLoading = useGlobalStore((state) => state.setIsLoading);
     const setData = useOutputStore((state) => state.setData);
+    const setPendingJobId = useOutputStore((state) => state.setPendingJobId);
 
     const handleQuerySubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ const Query = () => {
 
         try {
             checkQueryInputs(queryData);
-            console.log("Query data: ", queryData)
+            console.log("Query data: ", queryData);
         } catch (e) {
             setIsLoading(false);
             console.log("Error: ", e);
@@ -40,18 +41,19 @@ const Query = () => {
 
         try {
             const res = await startScraping(queryData);
-            const resData = res?.data?.data || null;
+            const resData = res?.data || null;
             console.log("Response Data: ", resData);
             if (resData) {
-                setData(resData);
-                toast.success("Data scrapped successfully.");
+                setPendingJobId(resData?.id);
+                toast.success(
+                    resData?.detail || "Scraping started successfully.",
+                );
             }
         } catch (e) {
+            setIsLoading(false);
             toast.error(
                 e?.response?.data?.detail || "Failed to start scraping...",
             );
-        } finally {
-            setIsLoading(false);
         }
     };
 

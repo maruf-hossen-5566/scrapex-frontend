@@ -1,17 +1,17 @@
 import { create } from "zustand";
 
 const initialStore = {
-    searchQuery: "",
-    platform: "",
+    searchQuery: "Samsung s24 ultra",
+    platform: "walmart",
     pageCount: 1,
 };
 
 const useQueryStore = create((set) => ({
     ...initialStore,
-    setSearchQuery: (value) => set({ initialStore, ["searchQuery"]: value }),
-    setPlatform: (value) => set({ initialStore, ["platform"]: value }),
-    setPageCount: (value) => set({ initialStore, ["pageCount"]: value }),
-    reset: () => set(initialStore),
+    setSearchQuery: (value) => set({ searchQuery: value }),
+    setPlatform: (value) => set({ platform: value }),
+    setPageCount: (value) => set({ pageCount: value }),
+    reset: () => set(() => initialStore),
 }));
 
 export default useQueryStore;

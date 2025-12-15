@@ -1,12 +1,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+const initialStore = {
+    data: null,
+    pendingJobId: null,
+};
+
 const useOutputStore = create(
     persist(
         (set) => ({
-            data: null,
-            setData: (data) => set({ data: data }),
-            clearData: () => set({ data: [] }),
+            ...initialStore,
+            setPendingJobId: (value) => set({ pendingJobId: value }),
+            setData: (value) => set({ data: value }),
+            clearOutputStore: () => set(() => initialStore),
         }),
         {
             name: "output-storage",
