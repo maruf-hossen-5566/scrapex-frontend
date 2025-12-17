@@ -62,10 +62,12 @@ const Query = () => {
             <div className="w-full max-w-2xl mx-auto mb-24 grid gap-8">
                 <QueryInput />
 
-                <div className="w-full flex items-center gap-8">
-                    <PlatformSelect />
+                <div className="w-full grid grid-cols-2 items-center gap-8">
+                    <div className="col-span-1 flex flex-col gap-3 overflow-hidden">
+                        <PlatformSelect />
+                    </div>
 
-                    <div className="w-full flex flex-col gap-3">
+                    <div className="col-span-1 flex flex-col gap-3 overflow-hidden">
                         <PageCount />
                     </div>
                 </div>

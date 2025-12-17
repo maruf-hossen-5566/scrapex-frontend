@@ -1,4 +1,4 @@
-import { Cards } from "@/components/custom/Output/Cards.jsx";
+import { Cards } from "@/components/custom/Cards/Cards.jsx";
 import { Csv } from "@/components/custom/Output/Csv";
 import { Json } from "@/components/custom/Output/Json";
 import { Stc } from "@/components/custom/Output/Stc";
@@ -30,7 +30,7 @@ function PreviewTabs() {
                     </TabsContent>
                     <TabsContent
                         value="json"
-                        className="w-full h-full bg-transparent p-0 flex gap-2 mb-6 overflow-auto"
+                        className="w-full h-full p-0 self-start flex gap-2 mb-6 overflow-auto"
                     >
                         <Json />
                     </TabsContent>

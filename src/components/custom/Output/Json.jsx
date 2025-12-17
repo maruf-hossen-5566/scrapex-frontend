@@ -8,7 +8,11 @@ export const Json = () => {
     return (
         <>
             <div className="w-full rounded-md p-4 bg-primary/5 border">
-                <JsonView data={data?.slice(0, 10)} style={darkStyles} />
+                <JsonView
+                    data={data?.items}
+                    shouldExpandNode={(level) => level === 0}
+                    style={darkStyles}
+                />
             </div>
         </>
     );

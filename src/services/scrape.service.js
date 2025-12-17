@@ -4,7 +4,7 @@ export const startScraping = (data) => {
     return api.post("/scrape", data);
 };
 
-export const fetchScrapedData = (id) => {
+export const getScrapedData = (id) => {
     return api.get(`/scrape/${id}`);
 };
 

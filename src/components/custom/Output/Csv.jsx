@@ -17,34 +17,31 @@ export const Csv = () => {
                 <Table className="w-full text-sm bg-background/50 overflow-hidden!">
                     <TableHeader className="bg-primary/20">
                         <TableRow className="divide-accent divide-x">
-                            {Object.keys(data[0])
-                                .slice(1)
-                                .map((key) => (
-                                    <TableHead key={key}>{key}</TableHead>
-                                ))}
+                            {Object.keys(data?.items[0]).map((key) => (
+                                <TableHead key={key}>{key}</TableHead>
+                            ))}
                         </TableRow>
                     </TableHeader>
 
                     <TableBody className="select-none">
-                        {data?.slice(0, 10)?.map((row, i) => (
+                        {data?.items?.map((row, i) => (
                             <TableRow
                                 key={i}
                                 className="divide-accent divide-x hover:bg-primary/5"
                             >
-                                {Object.values(row)
-                                    .slice(1)
-                                    .map((val, j) => (
-                                        <TableCell
-                                            key={j}
-                                            className="max-w-xs truncate"
-                                        >
-                                            {typeof val === "boolean"
+                                {Object.values(row).map((val, j) => (
+                                    <TableCell
+                                        key={j}
+                                        className="max-w-xs truncate"
+                                    >
+                                        {String(val)}
+                                        {/* {typeof val === "boolean"
                                                 ? val
                                                     ? "Yes"
                                                     : "No"
-                                                : String(val)}
-                                        </TableCell>
-                                    ))}
+                                                : String(val)}*/}
+                                    </TableCell>
+                                ))}
                             </TableRow>
                         ))}
                     </TableBody>
